@@ -1,0 +1,37 @@
+## What is all about
+
+jquery.pageaction is a simple jQuery library which handles hash links and
+interpret them as javascript actions.
+
+Hash links usally looks like this:
+
+    http://example.com/page.html#action__option1__option2
+
+Part of the link after he hash mark is splitted by  "\__" delimiter. First
+chunk is interpreted as function name and the rest is considered as function
+options. For example, the  link above is equal to execution of the code
+`action("option1", "option2")`
+
+
+## How to make it work
+
+First, define some plain javascript functions, which will handle pageaction
+events. Next, choose most appropriate variant of the pageaction's work or use
+both.
+
+### Handle document.location
+
+First variant handles hash part of the document.location. It's activated by one
+line of code:
+
+    $.pageaction();
+
+Second variant handles links with leading "#", such as
+`<a href="#action__option1__option2">`, for example. To make it work you need
+to define selector to apply and call `pageaction`. It can looks like
+
+    $(".action_link").pageaction();
+
+### Example
+
+Very basic example is avaliable in the `sample` directory.

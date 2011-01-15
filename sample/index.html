@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../jquery.pageaction.js"></script>
+        <script>
+            function gotolink(url){
+                document.location = url;
+            };
+            function log(message){
+                alert(message);
+            };
+            $(function(){
+                $.pageaction();
+                $(".pageaction").pageaction({delimiter: ';'});
+            });
+        </script>
+    </head>
+    <body>
+        <a class="pageaction" href="#log;hello world">log hello world</a><br />
+        <a class="pageaction" href="#gotolink;http://www.google.com">go to google</a><br />
+    </body>
+</html>
