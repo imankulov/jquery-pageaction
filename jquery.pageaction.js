@@ -2,7 +2,7 @@
 
     $.pageaction = function(options){
         var effectiveOptions = $.extend({}, $.pageaction.options, options);
-        do_action(effectiveOptions, location.hash);
+        do_action(this, effectiveOptions, location.hash);
     };
 
     $.extend($.pageaction, {
@@ -13,15 +13,15 @@
     });
 
     $.fn.pageaction = function(options) {
-        $(this).click(function(e){
+        $(this).live('click', function(e) {
             var effectiveOptions = $.extend({}, $.pageaction.options, options);
-            do_action(effectiveOptions, $(this).attr("href"));
+            do_action(this, effectiveOptions, $(this).attr("href"));
             return false;
         });
         return this;
     };
 
-    do_action = function(options, action_string){
+    do_action = function(self, options, action_string){
         if (!action_string)
             return;
         var action = action_string.substr(1);
@@ -29,7 +29,7 @@
         var fname = elements[0];
         var args = elements.slice(1);
         if (typeof options.container[fname] == 'function') {
-            options.container[fname].apply(this, args);
+            options.container[fname].apply(self, args);
         }
     };
 })(jQuery);
